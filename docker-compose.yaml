@@ -103,6 +103,11 @@ services:
       - 5173:5173
     environment:
       VITE_BACKEND_URL: ${VITE_BACKEND_URL:-http://192.168.178.100:8001}
+    healthcheck:
+      test: ["CMD", "nginx", "-v"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
     networks:
       - backend-network
 
